@@ -23,7 +23,7 @@ const hide = (elem) => {
 };
 
 // activeNote is used to keep track of the note in the textarea
-let activeNote = {};
+let activeNote = {};http://localhost:3001
 
 const getNotes = () =>
   fetch('/api/notes', {
