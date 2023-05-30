@@ -1,37 +1,49 @@
 const path = require('path')
 const express = require('express');
 const fs = require('fs')
-// const api = require('index.js');
+// const api = require('.'); 
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+app.use(express.json());
 app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
     console.log('beep boop')
-    res.json('beep boop')
+    
 }
 );
 
 app.get('/notes', (req, res) => {
     console.info(`${req.method} request for notes beep boop`);
+    res.sendFile(path.join(__dirname, 'public/notes.html'))
     console.log('beep boop')
-    res.json('beep boop')
-
+   
 }
 )
 
+const readFromFile = (path) => {
+    const fileData = fs.readFileSync(path);
+    return fileData;
 
-// app.get('/api/notes', (req, res) => {
-//     console.log(`${req.method} request recieved for notes`);
-//     readFromFile('./db/db.json').then((data => res.json(JSON.parse(data))));
-//         console.log('beep boop')
-//         res.json('beep boop')
-// })
+}
 
+app.get('/api/notes', (req, res) => {
+    console.log(`${req.method} request recieved for notes`);
+    var notes = JSON.parse(readFromFile('./db/db.json'));
+    // .then((data => res.json(JSON.parse(data))));
+        console.log(notes)
+        res.json(notes)
+
+})
+
+const getId = () =>{ return Math.floor((1 + Math.random()) * 0x10000)
+.toString(16)
+.substring(1);
+}
 // POST request 
 
 app.post('/api/notes', (req, res) => {
@@ -43,6 +55,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
+            id: getId()
         }
 
     fs.readFile('./db/db.json', 'utf8', (err, data)=> {
@@ -55,12 +68,13 @@ app.post('/api/notes', (req, res) => {
             parsedNote.push(newNote);
 
             fs.writeFile(
-                './db/reviews.json',
+                './db/db.json',
                 JSON.stringify(parsedNote, null, 4),
                 (writeErr) => 
                     writeErr
                     ? console.error(writeErr)
-                    : console.info('Beep boop!')
+                    : res.send('New note recieved')
+
             )
         }
     })
@@ -129,5 +143,5 @@ app.get('*', (req, res) => {
 }
 );
 
-fs.readFile
+
 
