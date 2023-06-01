@@ -44,6 +44,6 @@ Previous notes can be selected to read through text. As seen on left side of pag
 
 ## Links 
 
-Live URL:
+Live URL on Heroku: https://dashboard.heroku.com/apps/bencuttance-note-taker
 
 Github: https://github.com/BenCuttance/Note_Taker_Challenge 
