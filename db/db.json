@@ -13,5 +13,10 @@
         "title": "Try again with note",
         "text": "New note code",
         "id": "80e4"
+    },
+    {
+        "title": "Ben's delete",
+        "text": "delete",
+        "id": "ce00"
     }
 ]
