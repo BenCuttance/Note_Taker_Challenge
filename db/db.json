@@ -1,22 +1,12 @@
 [
     {
-        "title": "New note",
-        "text": "Hopefully id?",
-        "id": "749c"
+        "title": "Note 1",
+        "text": "Note 1",
+        "id": "24f6"
     },
     {
-        "title": "Try again",
-        "text": "New note take 2",
-        "id": "cd45"
-    },
-    {
-        "title": "Try again with note",
-        "text": "New note code",
-        "id": "80e4"
-    },
-    {
-        "title": "Ben's delete",
-        "text": "delete",
-        "id": "ce00"
+        "title": "Note 3",
+        "text": "Note 3",
+        "id": "746b"
     }
 ]
